@@ -53,6 +53,9 @@ export class CreateUserRolePermission1696025887157
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(
+      'ALTER TABLE users DROP CONSTRAINT users_role_uuid_fkey',
+    );
     await queryRunner.query('DROP TABLE users');
     await queryRunner.query('DROP TABLE roles_permissions');
     await queryRunner.query('DROP TABLE roles');

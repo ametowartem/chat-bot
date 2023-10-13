@@ -13,14 +13,11 @@ export class MessageEntity {
   @PrimaryGeneratedColumn('uuid')
   uuid: string;
 
-  @Column({ name: 'chat_uuid' })
-  chatUuid: string;
-
-  @Column({ name: 'user_uuid' })
-  userUuid: string;
-
   @Column()
   text: string;
+
+  @Column({ name: 'time_sending' })
+  timeSending: Date;
 
   @ManyToOne(() => UserEntity, (user) => user.messages)
   @JoinColumn({ name: 'user_uuid' })
@@ -31,18 +28,16 @@ export class MessageEntity {
   chat?: ChatEntity;
 
   constructor(
-    chatUuid: string,
-    userUuid: string,
     text: string,
     user: UserEntity,
     chat: ChatEntity,
+    timeSending?: Date,
     uuid?: string,
   ) {
     this.uuid = uuid;
-    this.chatUuid = chatUuid;
-    this.userUuid = userUuid;
     this.text = text;
     this.user = user;
     this.chat = chat;
+    this.timeSending = timeSending || new Date();
   }
 }

@@ -16,6 +16,13 @@ export class UserRepository extends Repository<UserEntity> {
       .getOne();
   }
 
+  async findOneByUuid(uuid: string) {
+    return await this.createQueryBuilder('users')
+      .where({ uuid })
+      .leftJoinAndSelect('users.role', 'roles')
+      .getOne();
+  }
+
   async saveUser(user: UserEntity) {
     try {
       const savedUser = await this.save(user);

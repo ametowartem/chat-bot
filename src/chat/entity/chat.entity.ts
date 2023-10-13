@@ -10,9 +10,9 @@ export class ChatEntity {
   chatName: string;
 
   @OneToMany(() => MessageEntity, (message) => message.chat)
-  messages: MessageEntity[];
+  messages?: MessageEntity[];
 
-  constructor(chatName: string, messages: MessageEntity[], uuid?: string) {
+  constructor(chatName: string, messages?: MessageEntity[], uuid?: string) {
     this.uuid = uuid;
     this.chatName = chatName;
     this.messages = messages;

@@ -8,7 +8,8 @@ export class CreateMessage1696063951956 implements MigrationInterface {
            uuid uuid DEFAULT uuid_generate_v4() primary key,
            chat_uuid uuid not null ,
            user_uuid uuid not null,
-           text varchar(1000) not null 
+           text varchar(1000) not null,
+           time_sending timestamp(0) with time zone default now()
        )`,
     );
   }

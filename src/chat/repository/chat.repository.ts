@@ -8,7 +8,16 @@ export class ChatRepository extends Repository<ChatEntity> {
     super(ChatEntity, dataSource.createEntityManager());
   }
 
-  async findByChatName(chat: ChatEntity) {
-    return await this.findBy({ chatName: chat.chatName });
+  async findByChatName(chatName: string) {
+    return await this.findOneBy({ chatName });
+  }
+
+  async getChatHistory(chatName: string) {
+    return await this.createQueryBuilder('chats')
+      .where({ chatName })
+      .leftJoinAndSelect('chats.messages', 'messages')
+      .leftJoinAndSelect('messages.user', 'user')
+      .orderBy('messages.timeSending', 'ASC')
+      .getOne();
   }
 }

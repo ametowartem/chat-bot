@@ -15,7 +15,11 @@ export class CreateUserMEssageChatFK1696195139858
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query('ALTER TABLE messages DROP CONSTRAINT chat_uuid');
-    await queryRunner.query('ALTER TABLE messages DROP CONSTRAINT user_uuid');
+    await queryRunner.query(
+      'ALTER TABLE messages DROP CONSTRAINT messages_chat_uuid_fkey',
+    );
+    await queryRunner.query(
+      'ALTER TABLE messages DROP CONSTRAINT messages_user_uuid_fkey',
+    );
   }
 }

@@ -13,6 +13,7 @@ import { UserEntity } from './user/entity/user.entity';
 import { RoleEntity } from './role/entity/role.entity';
 import { UserHttpModule } from './user/user-http.module';
 import { MessageEntity } from './message/entity/message.entity';
+import { MessageModule } from './message/message.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { MessageEntity } from './message/entity/message.entity';
     AuthModule,
     UserHttpModule,
     RoleModule,
+    MessageModule,
     TypeOrmModule.forRootAsync({
       imports: [CoreModule],
       useFactory: (configService: ConfigService) => ({

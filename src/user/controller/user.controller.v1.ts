@@ -8,7 +8,7 @@ import { PermissionHandler } from '../../permission/decorator/permission.decorat
 import { UserPermission } from '../../permission/const/permission.enum';
 import { ChangeUserRequestDto } from '../dto/change-user.request.dto';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { User } from '../decorator/user.decorator';
+import { User } from '../decorator/user-http.decorator';
 import { UserEntity } from '../entity/user.entity';
 import { DeleteUserRequestDto } from '../dto/delete-user.request.dto';
 

@@ -78,6 +78,10 @@ export class UserService {
     return await this.userRepository.findOneByUsername(username);
   }
 
+  async findOneByUuid(uuid: string) {
+    return await this.userRepository.findOneByUuid(uuid);
+  }
+
   async getUsersList(dto: IGetUsers) {
     return await this.userRepository.getUsersList(dto);
   }

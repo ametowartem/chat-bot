@@ -22,7 +22,6 @@ export class WsGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const socket = context.switchToWs();
     const client = socket.getClient();
-    const data = socket.getData();
     const [type, token] =
       client.handshake.headers.authorization?.split(' ') ?? [];
 
